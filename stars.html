@@ -8,7 +8,7 @@
 			$(document).ready(function(){
 
 					//configure spreadsheet
-				  var public_spreadsheet_url = '12VTSqqZgg_pgSYGcUkDIjJgQRXcpiosb7etsEwXkejQ'
+				  var public_spreadsheet_url = '1gpz1KvjryDjxMvvtFtUDufQDq9aJ4dCdAlbFUye13_o'
 					//function to get data from the spreadsheet
 				  var getData = function () {
 				    Tabletop.init({
@@ -26,8 +26,17 @@
 							// $("body").append(data[i].foods + " ");
 							// $("<h2>").addClass("fancyBorder").html(data[i].foods).appendTo("body");
 
-							
-							$("<h2>").addClass("fancyBorder").addClass(data[i].color).html(data[i].name + " likes the color " + data[i].color).appendTo("body");
+							if(parseInt(data[i].filmno) > 1000) {
+								var experience = "veteran";
+							} else if(parseInt(data[i].filmno) > 3000) {
+								var experience = "average";
+							} else if(parseInt(data[i].filmno) > 30) {
+								var experience = "up-and-coming";
+							} else {
+								var experience = "fresh";
+							}
+
+							$("<h2>").addClass("fancyBorder").addClass(experience).html(data[i].name + " (" + data[i].filmno + ")").appendTo("body");
 
 							// $("body").append("<h2 class='fancyBorder "+price+"'>"+data[i].foods+"</h2>");
 
@@ -48,31 +57,31 @@
 			}
 
 
-			.Red {
-				background-color:red;
-			}
-			.Orange {
-				background-color:orange;
-			}
-			.Yellow {
-				background-color:yellow;
-			}
-			.Green {
+			.veteran {
 				background-color:green;
 			}
-			.Blue {
+
+			.average {
+				background-color:yellow;
+			}
+
+			.up-and-coming {
+				background-color:red;
+			}
+
+			.fresh {
 				background-color:blue;
-			}
-			.Indigo {
-				background-color:indigo;
-			}
-			.Violet {
-				background-color:violet;
 			}
 
 		</style>
 
 	</head>
 	<body>
+
+	<h2 class="veteran"> Legends of Porn (Over 1000 Scenes) </h2>
+	<h2 class="average"> Veteran Pornstars (300 to 1000 Scenes) </h2>
+	<h2 class="up-and-coming"> Up and Coming Pornstars (Over 30 Scenes) </h2>
+	<h2 class="fresh"> Fresh Faces of Porn (Less than 30 Scenes) </h2>
+
 	</body>
 </html>
